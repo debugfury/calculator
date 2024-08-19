@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="i.css">
+</head>
+<body>
+    <div class="container">
+        <input type="text" class="input" id="display" readonly>
+        <div class="btn-container">
+            <!-- Row 1 -->
+            <button class="btn" onclick="appendToDisplay('%')">%</button>
+            <button class="btn" onclick="clearDisplay()">C</button>
+            <button class="btn" onclick="clearEntry()">CE</button>
+            <button class="btn" onclick="deleteLast()">Del</button>
+            <!-- Row 2 -->
+            <button class="btn" onclick="appendToDisplay('(')">(</button>
+            <button class="btn" onclick="appendToDisplay(')')">)</button>
+            <button class="btn" onclick="appendToDisplay('**')">^</button>
+            <button class="btn" onclick="appendToDisplay('**2')">^2</button>
+            <!-- Row 3 -->
+            <button class="btn" onclick="appendToDisplay('7')">7</button>
+            <button class="btn" onclick="appendToDisplay('8')">8</button>
+            <button class="btn" onclick="appendToDisplay('9')">9</button>
+            <button class="btn" onclick="appendToDisplay('/')">/</button>
+            <!-- Row 4 -->
+            <button class="btn" onclick="appendToDisplay('4')">4</button>
+            <button class="btn" onclick="appendToDisplay('5')">5</button>
+            <button class="btn" onclick="appendToDisplay('6')">6</button>
+            <button class="btn" onclick="appendToDisplay('*')">*</button>
+            <!-- Row 5 -->
+            <button class="btn" onclick="appendToDisplay('1')">1</button>
+            <button class="btn" onclick="appendToDisplay('2')">2</button>
+            <button class="btn" onclick="appendToDisplay('3')">3</button>
+            <button class="btn" onclick="appendToDisplay('-')">-</button>
+            <!-- Row 6 -->
+            <button class="btn" onclick="appendToDisplay('0')">0</button>
+            <button class="btn" onclick="appendToDisplay('00')">00</button>
+            <button class="btn" onclick="appendToDisplay('.')">.</button>
+            <button class="btn" onclick="appendToDisplay('+')">+</button>
+        </div>
+        <button class="btn equals-btn" onclick="calculate()">=</button>
+    </div>
+
+    <script>
+        // Get the display element
+        const display = document.getElementById('display');
+
+        // Function to append value to display
+        function appendToDisplay(value) {
+            display.value += value;
+        }
+
+        // Function to clear the display
+        function clearDisplay() {
+            display.value = '';
+        }
+
+        // Function to clear the last entry
+        function clearEntry() {
+            display.value = '';
+        }
+
+        // Function to delete the last character
+        function deleteLast() {
+            display.value = display.value.slice(0, -1);
+        }
+
+        // Function to calculate the result
+        function calculate() {
+            try {
+                display.value = eval(display.value);
+            } catch (error) {
+                display.value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
